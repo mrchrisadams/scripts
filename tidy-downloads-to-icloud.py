@@ -7,7 +7,7 @@ from datetime import datetime
 def tidy_new_downloads():
     """
     Return a lst of files in the folder to put into a new
-    timestamped downloads directory
+    timestamped downloads directory.
     """
     downloads_dir = pathlib.Path.home() / "Downloads"
     mess_dirs = set([file for file in downloads_dir.glob("Mess *")])
@@ -25,6 +25,8 @@ def tidy_new_downloads():
         dest_path = today_dir / file.name
         if not dest_path.exists():
             shutil.move(file, today_dir)
+
+    # TODO move to backed up icloud directory in ~/Documents/Downloads
 
 
 if __name__ == "__main__":
